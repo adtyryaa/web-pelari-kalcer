@@ -1,0 +1,61 @@
+:root{--ink:#1E1B4B;--pink:#FF4F8B;--yellow:#FFD84D;--mist:#F4F3FB;--slate:#5B5877;--r:14px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--mist);color:var(--ink);font:400 16px/1.5 Figtree,system-ui,sans-serif;padding-bottom:76px}
+h1,.brand,b{font-family:'Bricolage Grotesque',sans-serif}
+h1{font-size:1.8rem;line-height:1.15;margin:.2em 0 .6em}
+a{color:inherit}
+main{max-width:640px;margin:0 auto;padding:16px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--ink);color:#fff}
+.brand{font-weight:800;font-size:1.3rem;text-decoration:none;color:var(--yellow)}
+.tabs{display:flex;gap:6px}
+.tabs a{text-decoration:none;padding:8px 12px;border-radius:99px;font-weight:600}
+.tabs a:hover,.tabs a:focus-visible{background:#ffffff22;outline:none}
+.tabs a.go{background:var(--pink);color:#fff}
+@media(max-width:699px){
+  .tabs{position:fixed;left:0;right:0;bottom:0;background:var(--ink);justify-content:space-around;padding:10px 8px;z-index:1000}
+  .top{justify-content:center}
+}
+@media(min-width:700px){body{padding-bottom:0}}
+.card{background:#fff;border-radius:var(--r);padding:16px;margin:0 0 14px;display:block;text-decoration:none}
+.narrow{max-width:380px;margin:24px auto}
+label{display:block;margin:0 0 12px;font-weight:600}
+input{display:block;width:100%;margin-top:4px;padding:12px;border:2px solid #d9d6ee;border-radius:10px;font:inherit}
+input:focus{outline:3px solid var(--yellow);border-color:var(--ink)}
+.btn,.like{display:inline-block;border:0;border-radius:99px;padding:12px 22px;font:600 1rem Figtree,sans-serif;background:var(--pink);color:#fff;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+.like{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px #d9d6ee;padding:8px 16px}
+.like.on{background:var(--ink);color:var(--yellow);box-shadow:none}
+.btn:focus-visible,.like:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.err{background:#ffe3ec;color:#9b123f;padding:10px 12px;border-radius:10px}
+.muted{color:var(--slate)}small{color:var(--slate);display:block;font-size:.85rem}
+.stats,.streak,.row2{display:flex;gap:20px;flex-wrap:wrap}
+.stats b,.streak b,.row2 b{font-size:1.6rem;display:block;line-height:1.1}
+.feed .who{display:flex;justify-content:space-between}
+.feed .title{display:block;font:800 1.3rem 'Bricolage Grotesque',sans-serif;margin:6px 0 10px;text-decoration:none}
+.feed form{margin-top:10px}
+.flame b{font-size:2.6rem;color:var(--pink)}
+.row{display:flex;justify-content:space-between}
+.ctrl{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.smallmap,#map{height:300px;border-radius:var(--r);background:#d9d6ee}
+/* Layar lari */
+.runpage{background:var(--ink);color:#fff}
+.runpage main{padding:0;max-width:none}
+.runpage #map{height:42vh;border-radius:0}
+.panel{max-width:640px;margin:0 auto;padding:16px}
+.panel .big{display:flex;align-items:baseline;gap:10px}
+.panel .big span{font:800 5.5rem/1 'Bricolage Grotesque',sans-serif;color:var(--yellow)}
+.panel small{color:#A9A6D3}
+.panel input{background:#ffffff14;border-color:#ffffff33;color:#fff}
+.panel .ctrl{margin-top:16px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Satu halaman, banyak tampilan */
+.page{display:none}.page.active{display:block}
+
+/* Gambar untuk dipamerkan */
+h2{font:800 1.2rem 'Bricolage Grotesque',sans-serif;margin:18px 0 10px}
+.seg{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.seg button{border:0;border-radius:99px;padding:9px 16px;font:600 .95rem Figtree,sans-serif;background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px #d9d6ee;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--yellow);box-shadow:none}
+.seg button:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.pv{max-width:300px;border-radius:var(--r);overflow:hidden;background:conic-gradient(#3a376b 25%,#2c2a58 0 50%,#3a376b 0 75%,#2c2a58 0) 0 0/24px 24px}
+.pv canvas{display:block;width:100%;height:auto}

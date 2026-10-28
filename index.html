@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pelari Kalcer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="#/home">Pelari Kalcer</a>
+<nav class="tabs">
+  <a href="#/home">Beranda</a><a class="go" href="#/run">Lari</a><a href="#/profile">Profil</a><a href="#/login">Masuk</a>
+</nav></header>
+<main>
+
+<!-- BERANDA -->
+<section id="page-home" class="page">
+  <h1>Lagi lari siapa hari ini?</h1>
+  <article class="card feed">
+    <div class="who"><a href="#/profile"><b>@raya</b></a><span class="muted">28 Okt, 05:40</span></div>
+    <a class="title" href="#/activity">Lari pagi</a>
+    <div class="stats"><div><b>1,02</b><small>km</small></div><div><b>6:10</b><small>waktu</small></div><div><b>6:03</b><small>menit/km</small></div></div>
+    <button type="button" class="like on" data-n="11">Disukai · 12</button>
+  </article>
+  <article class="card feed">
+    <div class="who"><a href="#/profile"><b>@sinta</b></a><span class="muted">27 Okt, 17:10</span></div>
+    <a class="title" href="#/activity">Lari sore di Gasibu</a>
+    <div class="stats"><div><b>3,08</b><small>km</small></div><div><b>19:40</b><small>waktu</small></div><div><b>6:23</b><small>menit/km</small></div></div>
+    <button type="button" class="like" data-n="4">Suka · 4</button>
+  </article>
+  <article class="card feed">
+    <div class="who"><a href="#/profile"><b>@dimas</b></a><span class="muted">27 Okt, 06:05</span></div>
+    <a class="title" href="#/activity">Long run Minggu</a>
+    <div class="stats"><div><b>10,42</b><small>km</small></div><div><b>1:02:30</b><small>waktu</small></div><div><b>6:00</b><small>menit/km</small></div></div>
+    <button type="button" class="like" data-n="9">Suka · 9</button>
+  </article>
+</section>
+
+<!-- MASUK -->
+<section id="page-login" class="page">
+  <div class="card narrow">
+    <h1>Masuk</h1>
+    <form data-go="#/home">
+      <label>Username<input name="username" required autocomplete="username"></label>
+      <label>Kata sandi<input name="password" type="password" required autocomplete="current-password"></label>
+      <button class="btn">Masuk</button>
+    </form>
+    <p class="muted">Belum punya akun? <a href="#/register">Daftar</a></p>
+  </div>
+</section>
+
+<!-- DAFTAR -->
+<section id="page-register" class="page">
+  <div class="card narrow">
+    <h1>Daftar</h1>
+    <form data-go="#/run">
+      <label>Username<input name="username" required maxlength="20"></label>
+      <label>Kata sandi<input name="password" type="password" required minlength="6"></label>
+      <button class="btn">Buat akun</button>
+    </form>
+    <p class="muted">Sudah punya akun? <a href="#/login">Masuk</a></p>
+  </div>
+</section>
+
+<!-- LARI -->
+<section id="page-run" class="page">
+  <div id="runmap" aria-label="Peta lokasi"></div>
+  <div class="panel">
+    <p id="gps" class="muted">Mencari sinyal GPS…</p>
+    <div class="big"><span id="dist">0.00</span><small>km</small></div>
+    <div class="row2">
+      <div><b id="time">0:00</b><small>waktu</small></div>
+      <div><b id="pace">-</b><small>menit/km</small></div>
+    </div>
+    <input id="title" maxlength="80" placeholder="Judul lari (opsional)">
+    <div class="ctrl">
+      <button id="start" class="btn">Mulai</button>
+      <button id="pause" class="btn ghost" hidden>Jeda</button>
+      <button id="finish" class="btn ghost" hidden>Selesai</button>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL AKTIVITAS -->
+<section id="page-activity" class="page">
+  <h1 id="a-title">Lari pagi</h1>
+  <p class="muted" id="a-meta"></p>
+  <div id="actmap" class="smallmap"></div>
+  <div class="card stats">
+    <div><b id="a-km"></b><small>km</small></div>
+    <div><b id="a-time"></b><small>waktu</small></div>
+    <div><b id="a-pace"></b><small>menit/km</small></div>
+  </div>
+  <h2>Gambar untuk dipamerkan</h2>
+  <div class="seg" role="group" aria-label="Gaya gambar">
+    <button type="button" data-style="transparan" class="on">Transparan</button>
+    <button type="button" data-style="foto">Foto sendiri</button>
+    <button type="button" data-style="gelap">Gelap</button>
+  </div>
+  <label id="photo-wrap" hidden>Pilih foto latar<input type="file" id="photo" accept="image/*"></label>
+  <p class="muted" id="seg-tip">PNG transparan: tempel di atas fotomu saat membuat Story.</p>
+  <div class="pv"><canvas id="preview" width="540" height="960"></canvas></div>
+  <div class="ctrl">
+    <button id="dl" class="btn">Unduh gambar</button>
+    <button id="sh" class="btn ghost">Bagikan</button>
+  </div>
+</section>
+
+<!-- PROFIL -->
+<section id="page-profile" class="page">
+  <h1>@raya</h1>
+  <div class="card streak">
+    <div class="flame"><b>6</b><small>hari beruntun</small></div>
+    <div><b>41,37</b><small>km total</small></div>
+    <div><b>9</b><small>kali lari</small></div>
+  </div>
+  <a class="card row" href="#/activity"><span><b>Lari pagi</b><br><small class="muted">28 Okt 2026</small></span><span><b>5,21 km</b><br><small class="muted">28:14</small></span></a>
+  <a class="card row" href="#/activity"><span><b>Lari sore</b><br><small class="muted">27 Okt 2026</small></span><span><b>4,80 km</b><br><small class="muted">26:02</small></span></a>
+  <a class="card row" href="#/activity"><span><b>Lari pagi</b><br><small class="muted">26 Okt 2026</small></span><span><b>3,15 km</b><br><small class="muted">18:50</small></span></a>
+</section>
+
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="script.js"></script>
+</body></html>
